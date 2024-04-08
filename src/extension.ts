@@ -1,6 +1,11 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import path from 'path';
+import {
+	Message,
+	COMMAND,
+	MessageFromExtension
+} from "./models/message.model";
 import * as vscode from 'vscode';
 
 // This method is called when your extension is activated
@@ -76,6 +81,19 @@ export function activate(context: vscode.ExtensionContext) {
 				</body>
 			</html>
 		`;
+
+		// handle the message from webview
+		panel.webview.onDidReceiveMessage(
+			(message: Message) => {
+				const command = message.command;
+
+				switch (command) {
+					case COMMAND.testMessageFromWebview:
+						vscode.window.showInformationMessage(message.data.message);
+						return;
+				}
+			}
+		);
 
 	});
 
