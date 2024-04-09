@@ -16,3 +16,10 @@ export type MessageFromWebview = Message & {
   };
 };
 
+// extends Message
+export type MessageFromExtension = Message & {
+  command: COMMAND.testMessageFromExtension;
+  data: {
+    message: string;
+  };
+};

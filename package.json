@@ -16,6 +16,10 @@
       {
         "command": "vscode-extension-react-template.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "vscode_extension_react_template.sendMessage",
+        "title": "Send Message To Webview"
       }
     ]
   },
